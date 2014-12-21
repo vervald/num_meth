@@ -7,11 +7,15 @@ class Matrix
 end
 
 class QrSolver
-  def sign(a)
-    return a >= 0
+  def self.sign(a)
+    if a >= 0
+      return 1
+    else
+      return -1
+    end
   end
 
-  def do_qr(a)
+  def self.do_qr(a)
     n = a.row_size
     q = Matrix.identity(n)
     (0...n-1).each do |i|
@@ -39,7 +43,7 @@ class QrSolver
     return q, a
   end
 
-  def find_eigenvalues(a, eps = 1e-5)
+  def self.find_eigenvalues(a, eps = 1e-5)
     error = 2*eps
     iter_cnt = 0
     while error >= eps do
@@ -50,6 +54,10 @@ class QrSolver
       a.each_with_index :strict_lower do |el, i, j|
         error = el.abs if error < el.abs
         a[i, j] = 0 if el.abs < eps
+      end
+      if iter_cnt >= 10000
+        ans = nil
+        return ans, iter_cnt
       end
     end
     ans = []

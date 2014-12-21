@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'solver/qr' => 'solver#do_qr'
+  get 'solver/package_qr' => 'solver#do_package_qr'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
