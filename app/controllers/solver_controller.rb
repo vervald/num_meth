@@ -2,7 +2,8 @@ class SolverController < ApplicationController
   require 'matrix'
   def do_qr
     resp = {}
-    resp[:answer], resp[:iter_cnt] = QrSolver.find_eigenvalues(Matrix.rows(JSON.parse(params[:matrix])))
+    resp[:answer], resp[:iter_cnt] =
+      QrSolver.find_eigenvalues(Matrix.rows(JSON.parse(params[:matrix])))
     render json: resp.to_json
   end
 
@@ -28,6 +29,10 @@ class SolverController < ApplicationController
       resp[dim] = { :avr_iter => total_itr / params[:mat_cnt], :avr_time => total_time / params[:mat_cnt] * 1000 }
     end
     render json: resp.to_json
+  end
+
+  def gen_matrix
+    render text: "[[4, 2, 1],\n[2, 5, 3],\n[1, 3, 6]]"
   end
 
 end
