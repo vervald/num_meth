@@ -32,7 +32,10 @@ class SolverController < ApplicationController
   end
 
   def gen_matrix
-    render text: "[[4, 2, 1],\n[2, 5, 3],\n[1, 3, 6]]"
+    params[:from_val] ||= 1
+    params[:to_val] ||= 10
+    dim = params[:dim] || 3
+    render text: Generator.gen_matrix(dim, params[:from_val], params[:to_val]).to_a.to_s
   end
 
 end
