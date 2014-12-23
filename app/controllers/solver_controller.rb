@@ -13,7 +13,6 @@ class SolverController < ApplicationController
     resp = {}
 
     (params[:from_dim].to_i..params[:to_dim].to_i).each do |dim|
-      puts dim
       total_time = Time.now
       total_time -= total_time
       total_itr = 0
@@ -28,6 +27,13 @@ class SolverController < ApplicationController
       resp[dim] = { :avr_iter => total_itr / params[:mat_cnt], :avr_time => total_time / params[:mat_cnt] * 1000 }
     end
     render json: resp.to_json
+  end
+
+  def do_krilov
+    resp = {}
+    resp[:answer], resp[:iter_cnt] = Krilov.find_eigen_values(Matrix.rows(JSON.parse(params[:matrix])))
+    render json: resp.to_json
+
   end
 
 end
