@@ -47,7 +47,14 @@ class Krilov
       koef << Matrix.rows(tmp).det
     end
     puts koef
-    a, b = QrSolver.find_eigenvalues(a)
-    return a
+    v, d, v_inv = a.eigen
+    answer = []
+    (0..d.row_size - 1).each do |i|
+      answer << d[i, i]
+    end
+    puts answer
+    return answer
   end
 end
+
+Krilov.find_eigenvalues(Matrix.rows([[2, 1, 3],[5, 2, 1],[3, 1, 2]]))
