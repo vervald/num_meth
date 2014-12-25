@@ -32,7 +32,7 @@ class SolverController < ApplicationController
 
   def do_krilov
     resp = {}
-    resp[:answer] = Krilov.find_eigen_values(Matrix.rows(JSON.parse(params[:matrix])))
+    resp[:answer] = Krilov.find_eigenvalues(Matrix.rows(JSON.parse(params[:matrix])))
     render json: resp.to_json
   end
 

@@ -7,7 +7,8 @@
       <form>
         <textarea class="form-control" id="matrix" rows="10" placeholder="Матрица" ></textarea>
         <input type="button" onclick="genMatrix();" class="form-control btn btn-default" value="Генерация матрицы" />
-        <input type="button" onclick="eigenvalues();" class="form-control btn btn-default" value="Найти собственные значения" />
+        <input type="button" onclick="eigenvalues_qr();" class="form-control btn btn-default" value="Найти собственные значения (QR)" />
+        <input type="button" onclick="eigenvalues_krilov();" class="form-control btn btn-default" value="Найти собственные значения (Крылов)" />
       </form>
     </div>
   </div>
@@ -44,6 +45,10 @@
       <div id="plot1" >
       </div>
       <div id="plot2" >
+      </div>
+      <div id="plot3" >
+      </div>
+      <div id="plot4" >
       </div>
     </div>
   </div>

@@ -1,6 +1,5 @@
 #coding utf-8
 require 'matrix'
-require './qr_solver.rb'
 
 class Matrix
   def []=(i, j, x)
