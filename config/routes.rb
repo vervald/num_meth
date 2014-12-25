@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'laba2/index'
-
-  root 'laba1#index'
+  root 'laba2#index'
   get 'laba1' => 'laba1#index'
+  get 'laba2' => 'laba2#index'
 
   get 'solver/qr' => 'solver#do_qr'
   get 'solver/krilov' => 'solver#do_krilov'

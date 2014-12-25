@@ -32,7 +32,7 @@ class SolverController < ApplicationController
 
   def do_krilov
     resp = {}
-    resp[:answer] = Krilov.find_eigenvalues(Matrix.rows(JSON.parse(params[:matrix])))
+    resp[:answer] = Krilov.find_eigen_values(Matrix.rows(JSON.parse(params[:matrix])))
     render json: resp.to_json
   end
 
@@ -65,18 +65,42 @@ class SolverController < ApplicationController
   end
 
   def do_straight_interpolation
-    params[:nodes] = JSON.parse(params[:nodes])
+    from = params[:a].to_f
+    to = params[:b].to_f
+    n = params[:n].to_i
+    puts n
+    nodes = []
+
+    h = (to - from) / n
+
+    (0...n).each do |i|
+      nodes << Random.rand(from..to)
+      #nodes << from + h*i
+    end
+    nodes.sort!
 
     resp = {}
-    resp[:x], resp[:y], resp[:real_y] = Newton.do_straight_interpolation(params[:func], params[:nodes])
+    resp[:x], resp[:y], resp[:real_y] = Newton.do_straight_interpolation(params[:func], nodes)
     render json: resp.to_json
   end
 
   def do_reverse_interpolation
-    params[:nodes] = JSON.parse(params[:nodes])
+    from = params[:a].to_f
+    to = params[:b].to_f
+    n = params[:n].to_i
+    puts n
+    nodes = []
+
+    h = (to - from) / n
+
+    (0...n).each do |i|
+      nodes << Random.rand(from..to)
+      #nodes << from + h*i
+    end
+    nodes.sort!
 
     resp = {}
-    resp[:x], resp[:y], resp[:real_y] = Newton.do_reverse_interpolation(params[:func], params[:nodes])
+    resp[:x], resp[:y], resp[:real_y] = Newton.do_straight_interpolation(params[:func], nodes)
     render json: resp.to_json
   end
 
