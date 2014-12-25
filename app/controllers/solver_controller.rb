@@ -64,4 +64,20 @@ class SolverController < ApplicationController
     render text: Generator.gen_matrix(dim, params[:from_val], params[:to_val]).to_a.to_s
   end
 
+  def do_straight_interpolation
+    params[:nodes] = JSON.parse(params[:nodes])
+
+    resp = {}
+    resp[:x], resp[:y], resp[:real_y] = Newton.do_straight_interpolation(params[:func], params[:nodes])
+    render json: resp.to_json
+  end
+
+  def do_reverse_interpolation
+    params[:nodes] = JSON.parse(params[:nodes])
+
+    resp = {}
+    resp[:x], resp[:y], resp[:real_y] = Newton.do_reverse_interpolation(params[:func], params[:nodes])
+    render json: resp.to_json
+  end
+
 end

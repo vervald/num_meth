@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'laba2/index'
+
   root 'laba1#index'
   get 'laba1' => 'laba1#index'
 
@@ -8,6 +10,8 @@ Rails.application.routes.draw do
   get 'solver/gen_matrix' => 'solver#gen_matrix'
   get 'solver/package_qr' => 'solver#do_package_qr'
   get 'solver/package_krilov' => 'solver#do_package_krilov'
+  get 'solver/straight' => 'solver#do_straight_interpolation'
+  get 'solver/reverse' => 'solver#do_reverse_interpolation'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
