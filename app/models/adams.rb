@@ -64,7 +64,3 @@ class Adams
     return x, y
   end
 end
-
-x, y = Adams.solve_eq('2*x', 3, 9, 2, 3, 1)
-#puts x
-#puts y
