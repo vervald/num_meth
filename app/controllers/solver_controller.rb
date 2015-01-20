@@ -106,14 +106,16 @@ class SolverController < ApplicationController
 
   def do_adams
     #params[:func]
-    x0 = params[:init_x]
-    y0 = params[:init_y]
+    x0 = params[:init_x].to_i
+    y0 = params[:init_y].to_i
     id = params[:id].to_i
     a = params[:from].to_i
     b = params[:to].to_i
 
     resp = {}
     resp[:x], resp[:y] = Adams.solve_eq(params[:func], x0, y0, a, b, id)
+    puts resp[:x].to_s
+    puts resp[:y].to_s
     render json: resp.to_json
   end
 

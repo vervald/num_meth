@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'solver/package_krilov' => 'solver#do_package_krilov'
   get 'solver/straight' => 'solver#do_straight_interpolation'
   get 'solver/reverse' => 'solver#do_reverse_interpolation'
+  get 'solver/adams' => 'solver#do_adams'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
