@@ -4,7 +4,7 @@ class Adams
     return eval(f_str)
   end
 
-  def self.solve_eq(func, x0, y0, a, b, id, h = 0.01)
+  def self.solve_eq(func, x0, y0, a, b, id, h)
     x = []
     y = []
     #FROM a TO END POINT x0
