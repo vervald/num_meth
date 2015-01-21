@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'laba2#index'
+  get 'laba3/index'
+
+  get 'laba3_controller/index'
+
+  root 'laba3#index'
   get 'laba1' => 'laba1#index'
   get 'laba2' => 'laba2#index'
 
